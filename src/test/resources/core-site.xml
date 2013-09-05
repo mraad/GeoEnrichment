@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>hadoop.security.authentication</name>
+        <value>simple</value>
+    </property>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>com.esri.lonField</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>com.esri.latField</name>
+        <value>2</value>
+    </property>
+</configuration>
