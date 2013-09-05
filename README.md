@@ -40,7 +40,7 @@ Of course the key to this whole thing is the data !!!
 
 ## Build and package
 
-*Note:* On my MacBook Pro, I had to symbolic soft link java to /bin/java to pass the maven test phase:
+**Note: On my MacBook Pro, I had to symbolic soft link java to /bin/java to pass the maven test phase:**
 
     $ sudo ln -s /usr/bin/java /bin/java (optional, depending on your dev environment)
 
@@ -73,13 +73,13 @@ Use the world countries for GeoEnrichment. Put the zip file (included in the dat
 Remove the HDFS output folder. Run the Hadoop job where the longitude values are in the second (zero based) column in
 the input path and the latitude values are in the third column.  By default, the fields are tab separated.
 Geo enrich the output with the _POP2005_ field values of type _long_ from the shapefile in _cntry06.zip_.
-Represent that column as as a floating point with no decimal values (%.0f). Use the _com.esri.SearchShapefileIndexPolygon_ class to
+Represent that column as a floating point with no decimal values (%.0f). Use the _com.esri.SearchShapefileIndexPolygon_ class to
 perform the GeoEnrichment point in polygon search.
 Only write to the output path the locations that are inside the country polygons.
 Finally, the input path is _/user/cloudera/data.tsv_, the output path is _/user/cloudera/output_ and add _/user/cloudera/cntry06.zip_
 as a cached archive in the DistributedCache.
 
-## View Output
+## View The Output
 
     $ echo -e "ID\tLON\tLAT\tPOP2005" > /tmp/output.txt
     $ hadoop fs -cat /user/cloudera/output/part-* >> /tmp/output.txt
