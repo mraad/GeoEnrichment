@@ -40,7 +40,7 @@ polygon feature the selected attributes and add them to the original point.
 The Nearest Neighbor Weighted (NNW) method finds all the reference points within a specified distance and weights each point based
 on its distance. The GeoEnrichment value is the sum of the weighted attribute value.
 
-![ w_{i}=1-\frac{d_{i}}{R}](http://latex.codecogs.com/gif.latex?w_%7Bi%7D%3D1-%5Cfrac%7Bd_%7Bi%7D%7D%7BR%7D)
+![w_{i}=1-\frac{d_{i}}{R}](http://latex.codecogs.com/gif.latex?w_%7Bi%7D%3D1-%5Cfrac%7Bd_%7Bi%7D%7D%7BR%7D)
 
 Where:
 
