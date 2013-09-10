@@ -39,7 +39,7 @@ public class SearchShapefilePolygonMapperTest extends SearchShapefileTesting
         final MapperDriver mapperDriver = MapperDriver.newMapperDriver(new GeoEnrichmentMapper());
         mapperDriver.
                 configure("com.esri.url", file.toURI().toURL().toString()).
-                configure(GeoEnrichmentJob.KEY_COLUMNS, "fam|qual|%.1f").
+                configure(GeoEnrichmentJob.KEY_COLUMN, "fam:qual:%.1f").
                 configure(GeoEnrichmentJob.KEY_SEARCH_CLASS, TestSearchPolygonShapefile.class, SearchInterface.class).
                 configure(GeoEnrichmentJob.KEY_BUFFER, 0.000001F).
                 withAll(inputList).

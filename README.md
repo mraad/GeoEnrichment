@@ -82,7 +82,7 @@ Use the world countries for GeoEnrichment. Put the zip file (included in the dat
     $ hadoop jar target/GeoEnrichment-1.0-SNAPSHOT-job.jar\
      -Dcom.esri.lonField=1\
      -Dcom.esri.latField=2\
-     -Dcom.esri.columns="attr|POP2005|%.0f|long"\
+     -Dcom.esri.column="attr:POP2005:%.0f:long"\
      -Dcom.esri.searchClass=com.esri.SearchShapefileIndexPolygon\
      -Dcom.esri.writeAll=false\
      /user/cloudera/data.tsv\
@@ -97,6 +97,14 @@ class to perform the GeoEnrichment using a point in polygon search.
 Only write to the output path the locations that are inside the reference polygons.
 And finally, the input data is located in **/user/cloudera/data.tsv**, write the job output to the folder **/user/cloudera/output**
 and add **/user/cloudera/cntry06.zip** as a cached archive in the DistributedCache.
+
+The value of *com.esri.column* is of the form:
+
+<table>
+<tr>
+<td>Column Family</td><td>Qualifier</td><td>printf float format</td><td>i(nteger) or l(ong) or f(loat) or d(ouble)</td>
+</tr>
+</table>
 
 ## View The Output
 

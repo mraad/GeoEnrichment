@@ -43,7 +43,7 @@ public class SearchHBaseJobTest extends HBaseTesting
             final float buffer)
     {
         configuration.set(GeoEnrichmentJob.KEY_TABLE, new String(TAB));
-        configuration.set(GeoEnrichmentJob.KEY_COLUMNS, "fam|qual|%.1f");
+        configuration.set(GeoEnrichmentJob.KEY_COLUMN, "fam:qual:%.1f");
         configuration.setClass(GeoEnrichmentJob.KEY_SEARCH_CLASS, SearchHBase.class, SearchInterface.class);
         configuration.setFloat(GeoEnrichmentJob.KEY_BUFFER, buffer);
     }

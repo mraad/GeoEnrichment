@@ -25,7 +25,7 @@ public abstract class SearchShapefilePolygonTesting extends SearchShapefileTesti
 
         m_file = createPolygonShapefile();
 
-        m_columnlist = ColumnParser.newInstance().parseColumn("geom|qual|%.1f");
+        m_columnlist = ColumnParser.newInstance().parseColumn("geom:qual:%.1f");
         m_search = createSearchInterfaceImplementation();
         m_search.setup(m_configuration, m_columnlist);
     }

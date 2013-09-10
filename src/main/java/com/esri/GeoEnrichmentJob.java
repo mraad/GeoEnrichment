@@ -30,7 +30,7 @@ public final class GeoEnrichmentJob extends Configured implements Tool
     public final static String KEY_LAT_FIELD = "com.esri.latField";
     public final static String KEY_BUFFER = "com.esri.buffer";
     public static final String KEY_TABLE = "com.esri.table";
-    public static final String KEY_COLUMNS = "com.esri.columns";
+    public static final String KEY_COLUMN = "com.esri.column";
     public static final String KEY_SEARCH_CLASS = "com.esri.searchClass";
     public static final String KEY_WRITE_ALL = "com.esri.writeAll";
 
@@ -54,7 +54,7 @@ public final class GeoEnrichmentJob extends Configured implements Tool
         {
             return -1;
         }
-        if (isKeyMissing(getConf(), KEY_COLUMNS))
+        if (isKeyMissing(getConf(), KEY_COLUMN))
         {
             return -1;
         }

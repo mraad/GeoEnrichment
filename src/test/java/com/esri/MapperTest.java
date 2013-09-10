@@ -15,7 +15,7 @@ public class MapperTest
     {
         final MapperDriver mapperDriver = MapperDriver.newMapperDriver(new GeoEnrichmentMapper());
         mapperDriver.
-                configure(GeoEnrichmentJob.KEY_COLUMNS, "fam|qual|%.1f").
+                configure(GeoEnrichmentJob.KEY_COLUMN, "fam:qual:%.1f").
                 withInput(new LongWritable(0), new Text("ID\tFOO\tBAR")).
                 runTest();
         Assert.assertEquals(1, mapperDriver.getCounters().findCounter(GeoEnrichmentMapper.class.getSimpleName(), GeoEnrichmentMapper.BAD_LINE).getValue());
@@ -26,7 +26,7 @@ public class MapperTest
     {
         final MapperDriver mapperDriver = MapperDriver.newMapperDriver(new GeoEnrichmentMapper());
         mapperDriver.
-                configure(GeoEnrichmentJob.KEY_COLUMNS, "fam|qual|%.1f|d").
+                configure(GeoEnrichmentJob.KEY_COLUMN, "fam:qual:%.1f:d").
                 configure(GeoEnrichmentJob.KEY_SEARCH_CLASS, SearchAverage.class, SearchInterface.class).
                 configure(GeoEnrichmentJob.KEY_BUFFER, 0.5F).
                 withInput(new LongWritable(0), new Text("ID\t0.0\t0.0")).
@@ -39,7 +39,7 @@ public class MapperTest
     {
         final MapperDriver mapperDriver = MapperDriver.newMapperDriver(new GeoEnrichmentMapper());
         mapperDriver.
-                configure(GeoEnrichmentJob.KEY_COLUMNS, "fam|qual|%.1f").
+                configure(GeoEnrichmentJob.KEY_COLUMN, "fam:qual:%.1f").
                 configure(GeoEnrichmentJob.KEY_SEARCH_CLASS, SearchAverage.class, SearchInterface.class).
                 configure(GeoEnrichmentJob.KEY_BUFFER, 2.0F).
                 withInput(new LongWritable(0), new Text("ID\t0.0\t0.0")).
@@ -78,7 +78,7 @@ public class MapperTest
 
         final MapperDriver mapperDriver = MapperDriver.newMapperDriver(new GeoEnrichmentMapper());
         mapperDriver.
-                configure(GeoEnrichmentJob.KEY_COLUMNS, "fam|qual|%.1f|d").
+                configure(GeoEnrichmentJob.KEY_COLUMN, "fam:qual:%.1f:d").
                 configure(GeoEnrichmentJob.KEY_SEARCH_CLASS, SearchAverageWeighted.class, SearchInterface.class).
                 configure(GeoEnrichmentJob.KEY_BUFFER, offset).
                 withInput(new LongWritable(0), new Text(String.format("ID\t%.1f\t%.1f", ox, oy))).

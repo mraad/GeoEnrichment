@@ -31,7 +31,7 @@ public class SearchQuadTreeTest
     public void setUp() throws Exception
     {
         m_testUtil.startMiniCluster();
-        m_columnlist = ColumnParser.newInstance().parseColumn("geom|qual|%.1f");
+        m_columnlist = ColumnParser.newInstance().parseColumn("geom:qual:%.1f");
         createTable();
         m_searchQuadTree = new SearchQuadTree();
         m_testUtil.getConfiguration().set(GeoEnrichmentJob.KEY_TABLE, new String(TAB));

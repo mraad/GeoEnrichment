@@ -44,7 +44,7 @@ public class GeoEnrichmentMapper extends Mapper<LongWritable, Text, NullWritable
         m_writeAll = configuration.getBoolean(GeoEnrichmentJob.KEY_WRITE_ALL, true);
         m_lonField = configuration.getInt(GeoEnrichmentJob.KEY_LON_FIELD, 0);
         m_latField = configuration.getInt(GeoEnrichmentJob.KEY_LAT_FIELD, 0);
-        m_columnList = ColumnParser.newInstance().parseColumns(configuration.getStrings(GeoEnrichmentJob.KEY_COLUMNS));
+        m_columnList = ColumnParser.newInstance().parseColumns(configuration.getStrings(GeoEnrichmentJob.KEY_COLUMN));
 
         final Class<SearchInterface> clazz = (Class<SearchInterface>) configuration.getClass(GeoEnrichmentJob.KEY_SEARCH_CLASS, SearchNoop.class);
         try

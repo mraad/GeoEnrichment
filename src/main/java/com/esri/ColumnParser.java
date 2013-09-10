@@ -5,12 +5,14 @@ import org.apache.commons.logging.LogFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  */
 public class ColumnParser
 {
     private final Log m_log = LogFactory.getLog(getClass());
+    private final Pattern m_pattern = Pattern.compile(":");
 
     public ColumnParser()
     {
@@ -19,6 +21,11 @@ public class ColumnParser
     public static ColumnParser newInstance()
     {
         return new ColumnParser();
+    }
+
+    public List<ColumnInterface> parseColumn(final String text)
+    {
+        return parseColumns(new String[]{text});
     }
 
     public List<ColumnInterface> parseColumns(final String[] textArr)
@@ -31,31 +38,11 @@ public class ColumnParser
         return list;
     }
 
-    @Deprecated
-    public List<ColumnInterface> parseColumns(final String text)
-    {
-        final List<ColumnInterface> list = new ArrayList<ColumnInterface>();
-        for (final String item : text.split(","))
-        {
-            parseColumn(list, item);
-        }
-        if (list.size() == 0)
-        {
-            parseColumn(list, text);
-        }
-        return list;
-    }
-
-    public List<ColumnInterface> parseColumn(final String text)
-    {
-        return parseColumns(new String[]{text});
-    }
-
     private void parseColumn(
             final List<ColumnInterface> list,
             final String text)
     {
-        final String[] items = text.split("\\|");
+        final String[] items = m_pattern.split(text);
         if (items.length == 3)
         {
             list.add(new ColumnDouble(items[0], items[1], items[2]));
@@ -79,7 +66,7 @@ public class ColumnParser
         }
         else
         {
-            m_log.warn("Expecting 3 or 4 items in '" + text + "'when split by |");
+            m_log.warn("Expecting 3 or 4 items in '" + text + "' when split by comma");
         }
     }
 

@@ -35,7 +35,7 @@ public class SearchHBaseMapperTest extends HBaseTesting
         setConfiguration(mapperDriver);
         mapperDriver.
                 configure(GeoEnrichmentJob.KEY_TABLE, new String(TAB)).
-                configure(GeoEnrichmentJob.KEY_COLUMNS, "fam|qual|%.1f").
+                configure(GeoEnrichmentJob.KEY_COLUMN, "fam:qual:%.1f").
                 configure(GeoEnrichmentJob.KEY_SEARCH_CLASS, SearchHBase.class, SearchInterface.class).
                 configure(GeoEnrichmentJob.KEY_BUFFER, offset).
                 withInput(new LongWritable(0), new Text(String.format("ID\t%.1f\t%.1f", ox, oy))).
