@@ -1,24 +1,22 @@
 package com.esri;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 /**
  */
 public class QuadRowKey
 {
-    final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(128);
-    final DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);
+    final ByteBuffer m_byteBuffer = ByteBuffer.allocate(128);
 
     private void writeBytes(
             final double x,
             final double y) throws IOException
     {
-        byteArrayOutputStream.reset();
-        dataOutputStream.writeLong(Quad.encode(x, y));
-        dataOutputStream.writeDouble(x);
-        dataOutputStream.writeDouble(y);
+        m_byteBuffer.clear();
+        m_byteBuffer.putLong(Quad.encode(x, y));
+        m_byteBuffer.putDouble(x);
+        m_byteBuffer.putDouble(y);
     }
 
     public byte[] toBytes(
@@ -26,7 +24,7 @@ public class QuadRowKey
             final double y) throws IOException
     {
         writeBytes(x, y);
-        return byteArrayOutputStream.toByteArray();
+        return m_byteBuffer.array();
     }
 
     public byte[] toBytes(
@@ -35,8 +33,8 @@ public class QuadRowKey
             final long uuid) throws IOException
     {
         writeBytes(x, y);
-        dataOutputStream.writeLong(uuid);
-        return byteArrayOutputStream.toByteArray();
+        m_byteBuffer.putLong(uuid);
+        return m_byteBuffer.array();
     }
 
 }
